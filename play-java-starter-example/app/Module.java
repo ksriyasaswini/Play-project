@@ -1,9 +1,11 @@
 import com.google.inject.AbstractModule;
-import java.time.Clock;
-
+import dao.BookDao;
+import dao.FakeBookDao;
 import services.ApplicationTimer;
 import services.AtomicCounter;
 import services.Counter;
+
+import java.time.Clock;
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -19,6 +21,8 @@ public class Module extends AbstractModule {
 
     @Override
     public void configure() {
+        //bind(BookDao.class).to(BookDaoImpl.class);
+        bind(BookDao.class).to(FakeBookDao.class);
         // Use the system clock as the default implementation of Clock
         bind(Clock.class).toInstance(Clock.systemDefaultZone());
         // Ask Guice to create an instance of ApplicationTimer when the
