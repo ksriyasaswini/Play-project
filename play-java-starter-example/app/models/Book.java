@@ -1,24 +1,28 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+
+@Entity
 public class Book {
 
-    private String title;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonProperty("id")
     private Integer id;
 
-    public Book(String title, Integer id) {
-        this.title = title;
+    @Basic
+    @JsonProperty("title")
+    private String title;
+
+
+    public Book(Integer id, String title) {
         this.id = id;
+        this.title = title;
     }
 
     public Book() {
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Integer getId() {
@@ -27,5 +31,13 @@ public class Book {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
