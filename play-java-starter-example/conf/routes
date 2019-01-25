@@ -14,6 +14,13 @@ GET /hello2/:name        controllers.HelloWorldController.hello2(name: String,co
 POST /greetings          controllers.HelloWorldController.greetings()
 GET /me                  controllers.HelloWorldController.me()
 
+
+POST /login              controllers.LoginController.createLoginDetails()
+#DELETE  /login/:id          controllers.LoginController.deleteValuesById(id: Integer)
+#GET  /login              controllers.LoginController.getAllValues()
+#GET  /login/:id          controllers.LoginController.getValuesById(id: Integer)
+
+
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 # An example controller showing how to use dependency injection
@@ -23,3 +30,5 @@ GET     /message                    controllers.AsyncController.message
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+

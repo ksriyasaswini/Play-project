@@ -72,7 +72,8 @@ public class BookDaoImpl implements BookDao {
             return null;
         }
 
-        jpaApi.em().remove(existingBook);
+        jpaApi.em().remove(existingBook
+        );
         return existingBook;
     }
 

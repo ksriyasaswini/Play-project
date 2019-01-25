@@ -8,6 +8,6 @@ public interface CrudDAO<Entity ,Key> {
     Optional<Entity> read(Key id);
     Entity update(Entity entity);
     Entity delete(Key id);
-    Collection<Entity> all();
+   Collection<Entity> all();
 
 }
