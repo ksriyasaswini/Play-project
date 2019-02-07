@@ -1,8 +1,8 @@
 import com.google.inject.AbstractModule;
 import dao.BookDao;
 import dao.BookDaoImpl;
-import dao.LoginDao;
-import dao.LoginDaoImpl;
+import dao.UserDao;
+import dao.UserDaoImpl;
 import services.ApplicationTimer;
 import services.AtomicCounter;
 import services.Counter;
@@ -32,7 +32,7 @@ public class Module extends AbstractModule {
         bind(ApplicationTimer.class).asEagerSingleton();
         // Set AtomicCounter as the implementation for Counter.
         bind(Counter.class).to(AtomicCounter.class);
-        bind(LoginDao.class).to(LoginDaoImpl.class);
+        bind(UserDao.class).to(UserDaoImpl.class);
 
     }
 

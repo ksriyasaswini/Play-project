@@ -15,10 +15,10 @@ POST /greetings          controllers.HelloWorldController.greetings()
 GET /me                  controllers.HelloWorldController.me()
 
 
-POST /login              controllers.LoginController.createLoginDetails()
-#DELETE  /login/:id          controllers.LoginController.deleteValuesById(id: Integer)
-#GET  /login              controllers.LoginController.getAllValues()
-#GET  /login/:id          controllers.LoginController.getValuesById(id: Integer)
+POST /login              controllers.UserController.createUserDetails()
+#DELETE  /login/:id          controllers.UserController.deleteValuesById(id: Integer)
+#GET  /login              controllers.UserController.getAllValues()
+#GET  /login/:id          controllers.UserController.getValuesById(id: Integer)
 
 
 # An example controller showing a sample home page
