@@ -87,45 +87,46 @@ public class UserController extends Controller {
     }
 
 
-//    public Result signInUser() {
-//
-//        final JsonNode json = request().body().asJson();
-//
-//        final String username = json.get("username").asText();
-//        final String password = json.get("password").asText();
-//        if (null == password || null == username) {
-//            return badRequest("Missing mandatory parameters");
-//        }
-//
-//        final UserDetails existingUser = userDao.findUserByName(username);
-//
-//        if (null == existingUser) {
-//            return unauthorized("Wrong username");
-//        }
-//
-//        final String salt = existingUser.getSalt();
-//        final int iterations = existingUser.getHashIterations();
-//        final String hash = generateHash(salt, password, iterations);
-//
-//        if (!existingUser.getPasswordHash().equals(hash)) {
-//            return unauthorized("Wrong password");
-//        }
-//
-//        existingUser.setAccessToken(generateAccessToken());
-//
-//        //userDao.update(existingUser);
-//
-//        final JsonNode result = Json.toJson(existingUser);
-//
-//        return ok(result);
-//    }
-//
-//    private String generateAccessToken() {
-//
-//        // TODO Generate a random string of 20 (or more characters)
-//
-//        return "ABC1234";
-//    }
+    @Transactional
+    public Result signInUser(String username, String password) {
+
+        final JsonNode json = request().body().asJson();
+
+        //final String username = json.get("username").asText();
+       // final String password = json.get("password").asText();
+        if (null == password || null == username) {
+            return badRequest("Missing mandatory parameters");
+        }
+
+        final UserDetails existingUser = userDao.findUserByName(username);
+
+        if (null == existingUser) {
+            return unauthorized("Wrong username");
+        }
+
+        final String salt = existingUser.getSalt();
+        final int iterations = existingUser.getHashIterations();
+        final String hash = generateHash(salt, password, iterations);
+
+        if (!existingUser.getPasswordHash().equals(hash)) {
+            return unauthorized("Wrong password");
+        }
+
+        existingUser.setAccessToken(generateAccessToken());
+
+        userDao.update(existingUser);
+
+        final JsonNode result = Json.toJson(existingUser);
+
+        return ok(result);
+    }
+
+    private String generateAccessToken() {
+
+        // TODO Generate a random string of 20 (or more characters)
+
+        return "ABC1234";
+    }
 
 
 

@@ -15,10 +15,14 @@ POST /greetings          controllers.HelloWorldController.greetings()
 GET /me                  controllers.HelloWorldController.me()
 
 
-POST /login              controllers.UserController.createUserDetails()
+POST /register              controllers.UserController.createUserDetails()
+PUT /signIn               controllers.UserController.signInUser(username: String, password: String)
 #DELETE  /login/:id          controllers.UserController.deleteValuesById(id: Integer)
 #GET  /login              controllers.UserController.getAllValues()
 #GET  /login/:id          controllers.UserController.getValuesById(id: Integer)
+
+
+POST /details               controllers.RestaurantController.createRestaurant()
 
 
 # An example controller showing a sample home page
