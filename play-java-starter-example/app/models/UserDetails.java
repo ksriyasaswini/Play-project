@@ -2,6 +2,7 @@ package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 
@@ -13,7 +14,7 @@ public class UserDetails {
     @JsonProperty("id")
     private Integer id;
 
-    @Basic
+    @NaturalId
     @JsonProperty("username")
     private String username;
 
@@ -36,12 +37,12 @@ public class UserDetails {
     @Basic
     private String accessToken;
 
-    public UserDetails(Integer id, String username, String password, String passwordHash, String salt, Integer hashIteration) {
-        this.id = id;
+    public UserDetails(String username, String password, String passwordHash, String salt, Integer hashIteration) {
+        //this.id = id;
         this.username = username;
         this.password = password;
         this.salt = salt;
-        this.hashIterations = hashIterations;
+        this.hashIterations = hashIteration;
     }
 
     public UserDetails() {

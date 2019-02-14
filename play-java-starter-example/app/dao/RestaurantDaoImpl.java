@@ -4,6 +4,9 @@ import models.Restaurant;
 import play.db.jpa.JPAApi;
 
 import javax.inject.Inject;
+import javax.persistence.TypedQuery;
+import java.util.Collection;
+import java.util.List;
 
 
 public class RestaurantDaoImpl implements RestaurantDao{
@@ -33,6 +36,14 @@ public class RestaurantDaoImpl implements RestaurantDao{
     @Override
     public Restaurant update(Restaurant restaurant) {
         return null;
+    }
+
+    @Override
+    public Collection<Restaurant> all() {
+        TypedQuery<Restaurant> query = jpaApi.em().createQuery("SELECT r FROM Restaurant r", Restaurant.class);
+        List<Restaurant> restaurants= query.getResultList();
+
+        return restaurants;
     }
 
 }

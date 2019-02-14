@@ -11,6 +11,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.inject.Inject;
+import java.util.Collection;
 
 public class RestaurantController extends Controller {
 
@@ -46,15 +47,15 @@ public class RestaurantController extends Controller {
     }
 
 
-//    @Transactional
-//    public Result getAllRestaurants() {
-//
-//        Collection<Restaurant> restaurant = restaurantDao.all();
-//
-//        final JsonNode result = Json.toJson(restaurant);
-//
-//        return ok(result);
-//    }
+    @Transactional
+    public Result getAllRestaurants() {
+
+        Collection<Restaurant> restaurant = restaurantDao.all();
+
+        final JsonNode result = Json.toJson(restaurant);
+
+        return ok(result);
+    }
 
 }
 

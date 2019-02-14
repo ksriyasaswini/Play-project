@@ -23,7 +23,7 @@ PUT /signIn               controllers.UserController.signInUser(username: String
 
 
 POST /details               controllers.RestaurantController.createRestaurant()
-
+GET /details                 controllers.RestaurantController.getAllRestaurants()
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
